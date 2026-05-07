@@ -1,0 +1,41 @@
+---
+import fs from 'fs';
+
+const content = fs.readFileSync('./src/content/home.md', 'utf-8');
+
+const title =
+  content.match(/title: "(.*)"/)?.[1] || '';
+
+const subtitle =
+  content.match(/subtitle: "(.*)"/)?.[1] || '';
+
+const body =
+  content.split('---')[2] || '';
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+
+    <style>
+      body {
+        background: #0a0f1c;
+        color: white;
+        font-family: Arial;
+        padding: 40px;
+        line-height: 1.6;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>{title}</h1>
+    <p>{subtitle}</p>
+
+    <div>
+      {body}
+    </div>
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  </body>
+</html>
