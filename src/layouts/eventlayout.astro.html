@@ -1,0 +1,71 @@
+---
+const { title, date, location } = Astro.props;
+---
+
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{title}</title>
+
+    <style>
+      body {
+        margin: 0;
+        font-family: Arial;
+        background: #0a0f1c;
+        color: white;
+        line-height: 1.6;
+      }
+
+      .hero {
+        padding: 80px 20px 40px;
+        background: linear-gradient(145deg, #111a2d, #0a0f1c);
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+      }
+
+      .meta {
+        color: #9aa4b2;
+        margin-top: 8px;
+      }
+
+      main {
+        max-width: 900px;
+        margin: auto;
+        padding: 40px 20px;
+      }
+
+      .content {
+        background: #121a2b;
+        padding: 25px;
+        border-radius: 14px;
+        border: 1px solid rgba(255,255,255,0.05);
+      }
+
+      a {
+        color: #4f7cff;
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <div class="hero">
+      <h1>{title}</h1>
+
+      <div class="meta">📅 {date}</div>
+      <div class="meta">📍 {location}</div>
+    </div>
+
+    <main>
+      <div class="content">
+        <slot />
+      </div>
+    </main>
+
+  </body>
+</html>
