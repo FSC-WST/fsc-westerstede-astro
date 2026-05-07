@@ -1,41 +1,45 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+
 import fs from 'fs';
 
-const content = fs.readFileSync('./src/content/home.md', 'utf-8');
+const newsDir = './src/content/news';
 
-const title =
-  content.match(/title: "(.*)"/)?.[1] || '';
+const files = fs.readdirSync(newsDir);
 
-const subtitle =
-  content.match(/subtitle: "(.*)"/)?.[1] || '';
+const news = files.map(file => {
+  const content = fs.readFileSync(`${newsDir}/${file}`, 'utf-8');
 
-const body =
-  content.split('---')[2] || '';
+  return {
+    title: content.match(/title: "(.*)"/)?.[1],
+    date: content.match(/date: "(.*)"/)?.[1],
+    body: content.split('---')[2]
+  };
+});
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
+<MainLayout title="News">
 
-    <style>
-      body {
-        background: #0a0f1c;
-        color: white;
-        font-family: Arial;
-        padding: 40px;
-        line-height: 1.6;
-      }
-    </style>
-  </head>
+  <h1 style="margin-bottom:40px;">
+    News
+  </h1>
 
-  <body>
-    <h1>{title}</h1>
-    <p>{subtitle}</p>
+  {
+    news.map(item => (
+      <div class="card" style="margin-bottom:20px;">
 
-    <div>
-      {body}
-    </div>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </body>
-</html>
+        <h2>{item.title}</h2>
+
+        <p style="color:#9aa4b2;">
+          {item.date}
+        </p>
+
+        <div>
+          {item.body}
+        </div>
+
+      </div>
+    ))
+  }
+
+</MainLayout>

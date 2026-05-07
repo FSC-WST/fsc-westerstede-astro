@@ -1,12 +1,9 @@
 ---
-title: "Fallschirmsport-Club Westerstede e.V."
-subtitle: "Springen. Gemeinschaft. Organisation."
+title: "Sprungtag Mai"
+date: "2026-05-20"
+location: "Flugplatz Westerstede"
 ---
 
-Willkommen beim FSC Westerstede.
+Gemeinsamer Sprungtag mit Vereinsmitgliedern und Gästen.
 
-Hier organisieren wir:
-- Sprungtage
-- Events
-- Mitgliederkommunikation
-- Videos & Dokumente
+Beginn: 09:00 Uhr

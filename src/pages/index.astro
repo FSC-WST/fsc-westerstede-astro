@@ -1,4 +1,6 @@
 ---
+import MainLayout from '../layouts/MainLayout.astro';
+
 import fs from 'fs';
 
 const content = fs.readFileSync('./src/content/home.md', 'utf-8');
@@ -13,29 +15,22 @@ const body =
   content.split('---')[2] || '';
 ---
 
-<html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <title>{title}</title>
+<MainLayout title={title}>
 
-    <style>
-      body {
-        background: #0a0f1c;
-        color: white;
-        font-family: Arial;
-        padding: 40px;
-        line-height: 1.6;
-      }
-    </style>
-  </head>
+  <section style="padding:80px 0;text-align:center;">
 
-  <body>
-    <h1>{title}</h1>
-    <p>{subtitle}</p>
+    <h1 style="font-size:3rem;margin-bottom:20px;">
+      {title}
+    </h1>
 
-    <div>
-      {body}
-    </div>
-    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-  </body>
-</html>
+    <p style="color:#9aa4b2;font-size:1.2rem;">
+      {subtitle}
+    </p>
+
+  </section>
+
+  <div class="card">
+    {body}
+  </div>
+
+</MainLayout>
